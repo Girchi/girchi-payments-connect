@@ -27,7 +27,8 @@ app.post("/api", (req, res) => {
                 res.json(response.data);
             })
             .catch(error => {
-                res.json({"error": 'error retrieving token'});
+                const err = error.response?.data?.error ?? 'error retrieving token';
+                res.json({"error": err});
             })
     }
 
@@ -39,7 +40,8 @@ app.post("/api", (req, res) => {
                 res.json(response.data);
             })
             .catch(error => {
-                res.json({"error": 'error refreshing token'});
+                const err = error.response?.data?.error ?? 'error refreshing token';
+                res.json({"error": err});
             })
     }
 })
